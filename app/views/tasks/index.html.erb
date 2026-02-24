@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>
+    Mes Tâches
+    <%= link_to "+ Ajouter", new_task_path, class: "btn btn-primary" %>
+  </h1>
+
+  <ul>
+    <% @tasks.each do |task| %>
+      <li class="task-card">
+        <input type="checkbox" <%= "checked" if task.completed %> disabled class="task-checkbox">
+
+        <div class="task-content">
+          <%= link_to task.title, task_path(task), class: "task-title #{'completed' if task.completed}" %>
+        </div>
+
+        <%= link_to "Supprimer", task_path(task),
+            data: { turbo_method: :delete, turbo_confirm: "Supprimer ?" },
+            class: "btn-danger" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

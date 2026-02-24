@@ -1,0 +1,19 @@
+<h1>Modifier la tâche</h1>
+
+<%= form_with model: @task do |t| %>
+
+    <%= t.label :title, "Titre" %>
+    <%= t.text_field :title %>
+
+    <%= t.label :details, "Détails" %>
+    <%= t.text_area :details %>
+
+    <%= t.label :completed, "Complétée ?" %>
+    <%= t.check_box :completed %>
+
+
+  <%= t.submit "Mettre à jour" %>
+<% end %>
+
+<hr>
+<%= link_to "Annuler", task_path(@task) %>
